@@ -17,10 +17,9 @@ class CampersController < ApplicationController
         redirect_to camper_path(new_camper)
     end
 
-
     private
 
     def camper_params( *arg )
-    params.require(:camper).permit( *arg )
+        params.require(:camper).permit( *arg )
     end
 end
