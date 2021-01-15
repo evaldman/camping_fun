@@ -1,2 +1,10 @@
-<h1>CamperActivities#new</h1>
-<p>Find me in app/views/camper_activities/new.html.erb</p>
+<h1>Sign up a camper for an activity</h1>
+<%= form_for @new_camper_activity do | f | %>
+    <%= f.label :camper_id, "Camper:" %>
+    <%= collection_select :camper_activity, :camper_id, Camper.all, :id, :to_s %><br /><br />
+    <%= f.label :activity_id, "Activity:" %>
+    <%= collection_select :camper_activity, :activity_id, Activity.all, :id, :name %><br /><br />
+    <%= f.label :time %>
+    <%= f.number_field :time %><br /><br />
+    <%= f.submit %>
+<% end %>
