@@ -1,10 +1,18 @@
 <h1>Sign up a camper for an activity</h1>
 <%= form_for @new_camper_activity do | f | %>
     <%= f.label :camper_id, "Camper:" %>
-    <%= collection_select :camper_activity, :camper_id, Camper.all, :id, :to_s %><br /><br />
+    <%= collection_select :camper_activity, :camper_id, Camper.all, :id, :to_s, prompt: "Please select a camper" %><br /><br />
     <%= f.label :activity_id, "Activity:" %>
-    <%= collection_select :camper_activity, :activity_id, Activity.all, :id, :name %><br /><br />
+    <%= collection_select :camper_activity, :activity_id, Activity.all, :id, :name, prompt: "Please select an activity" %><br /><br />
     <%= f.label :time %>
-    <%= f.number_field :time %><br /><br />
+    <%= f.number_field :time, placeholder: "enter time" %><br /><br />
     <%= f.submit %>
+<% end %>
+
+<% if flash[:messages] %>
+  <% flash[:messages].each do |message| %>
+    <p>
+        <%= message %> 
+    </p>
+  <% end %>
 <% end %>
